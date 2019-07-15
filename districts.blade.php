@@ -23,46 +23,6 @@
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     -->
 <link href="./main.css" rel="stylesheet"></head>
-<style>
-    ul, #myUL {
-      list-style-type: none;
-    }
-    
-    #myUL {
-      margin: 0;
-      padding: 0;
-    }
-    
-    .caret {
-      cursor: pointer;
-      -webkit-user-select: none; /* Safari 3.1+ */
-      -moz-user-select: none; /* Firefox 2+ */
-      -ms-user-select: none; /* IE 10+ */
-      user-select: none;
-    }
-    
-    .caret::before {
-      content: "\25B6";
-      color: black;
-      display: inline-block;
-      margin-right: 6px;
-    }
-    
-    .caret-down::before {
-      -ms-transform: rotate(90deg); /* IE 9 */
-      -webkit-transform: rotate(90deg); /* Safari */'
-      transform: rotate(90deg);  
-    }
-    
-    .nested {
-      display: none;
-    }
-    
-    .active {
-      display: block;
-    }
-    </style>
-
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -142,7 +102,7 @@
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                       Buhwa Ezra
+                                        Alina Mclourd
                                     </div>
                                     <div class="widget-subheading">
                                         Administrator
@@ -487,8 +447,20 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{url('/funding')}}">
+                                    <a href="{{url('/upgrades')}}">
+                                        <i class="metismenu-icon pe-7s-cloud-upload"></i>
+                                        Upgrade
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="{{url('/payments')}}">
                                         <i class="metismenu-icon pe-7s-cash"></i>
+                                        Payments
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/funding')}}">
+                                        <i class="metismenu-icon pe-7s-graph1"></i>
                                         Funding
                                     </a>
                                 </li>
@@ -509,199 +481,96 @@
                         </div>
                     </div>
                 </div>    <div class="app-main__outer">
-                        <div class="app-main__inner">
-                                <div class="col-md-6 col-xl-4">
-                                        <div class="card mb-3 widget-content bg-arielle-smile">
-                                            <div class="widget-content-wrapper text-white">
-                                                <div class="widget-content-left">
-                                                    <div class="widget-heading">Total districts</div>
-                                                    <div class="widget-subheading"></div>
-                                                </div>
-                                                <div class="widget-content-right">
-                                                    <div class="widget-numbers text-white"><span> 127</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                     <div class="app-main__inner">
-                    </div>
+                        @include('inc.messages')
+
+                        <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
+                  <li class="nav-item">
+                      <a role="tab" class="nav-link active" id="tab-0" data-toggle="tab" href="#tab-content-0">
+                          <span>Hierachy</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a role="tab" class="nav-link" id="tab-1" data-toggle="tab" href="#tab-content-1">
+                          <span> Add District</span>
+                      </a>
+                  </li>
+                  
+                </ul>
+
+
+
+<div class="tab-content">
+
+
+
+
+
+ <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+                             
+                            
+                      
+                </div>
+
+
+
+
+
+
+
+
+                  <div class="tab-pane tabs-animation fade " id="tab-content-1" role="tabpanel">
+
+
+
+<div class="row">
+<div class="col-md-4">
+
+                       <div class="main-card mb-10 card">
+                                     <div class="card-body">
+
+
+
+
+{!!Form::open(['action' => 'districtscontroller@store','method'=>'post']) !!}
+                        <div class="form-group">
+                            {{Form::label('district','District Name: ')}}
+                             {{Form::text('district','',['class'=>'form-control','placeholder'=>'District Name'])}} 
+                            </div>
+                            
+                            
+                             <br><div class="form-group">
+
+                                {{ Form::submit('Create',['class'=>'btn btn-success'])}}
+                            </div>
+                        
+                    {!!Form::close()!!}
+                     
+
+
+                               </div>
+                           </div>
+                  </div>
+              </div>
+
+
+                     
+                  </div>
                     
-                    <p>Please select a district to view its hierachical structure.</p>
-                    <p>Click on the arrow(s) to open or close the tree branches.</p>
 
-<ul id="myUL">
-  <li><span class="caret">Districts</span>
-    <ul class="nested">
-        <li><span class="caret">Central Region</span> 
-        <ul class="nested">
-        <li><span class="caret"><a>Kampala</a></span>
-                <ul class="nested">
-                        <li><span class="caret">Sudhir </span>                     
-                                <ul class="nested">
-                                        <li>Hamna</li> 
-                                        <li>Walter</li> 
-                                        <li>Bruno</li>       
-                                </ul>    
-                        </li>       
-                </ul>
-        </li> 
-        <li><a><span class="caret">Kalangala</span></a>
-                <ul class="nested">
-                        <li><span class="caret">Trevor</span>
-                                <ul class="nested">
-                                        <li>Noah</li> 
-                                        <li>Patricia</li> 
-                                        <li>Benson</li>       
-                                </ul>    
-                        </li>        
-                </ul>    
-        </li> 
-        <li><a><span class="caret">Mukono</span></a>
-                <ul class="nested">
-                        <li><span class="caret">Madhivani</span>
-                                <ul class="nested">
-                                        <li>Duncan</li> 
-                                        <li>Joel</li> 
-                                        <li>Mwesigwa</li>
-                                               
-                                </ul>    
-                        </li> 
-                </ul>
-        </li>        
-        </ul>
-    </li>
-        <li><span class="caret">Eastern Region</span>
-            <ul class="nested">
-        <li><a><span class="caret">Jinja</span></a>
-                 <ul class="nested">
-                            <li><span class="caret">Mary</span>
-                                    <ul class="nested">
-                                        <li>Martin</li>
-                                        <li>Doreen</li> 
-                                        <li>Mata</li>        
-                                    </ul>    
-                             </li> 
-                                    
-                                          
-                </ul>    
-        </li> 
-        <li><a><span class="caret">Busia</span></a>
-                <ul class="nested">
-                            <li><span class="caret">Magezi</span>
-                                    <ul class="nested">
-                                                    <li>Eden</li>
-                                                    <li>Pogba</li>
-                                                    <li>Kante</li>         
-                                    </ul>    
-                           </li> 
-                                           
-                </ul>    
-        </li> 
-        <li><a><span class="caret">Soroti</span></a>
-                    <ul class="nested">
-                            <li><span class="caret">Gundi</span>
-                                            <ul class="nested">
-                                                    <li>Einstein</li>
-                                                    <li>Newton</li>
-                                                    <li>Paul</li>         
-                                            </ul>    
-                            </li>         
-                    </ul>
-         </li>       
-        </ul>
-        </li>
-      <li><span class="caret">Western Region</span>
-        <ul class="nested">
-                <li><a><span class="caret">Hoima</span></a>
-                        <ul class="nested">
-                            <li><span class="caret">Ezra</span>
-                                        <ul class="nested">
-                                                <li>James</li>
-                                                <li>Thorns</li>
-                                                <li> William</li>         
-                                        </ul>    
-                            </li>        
-                        </ul>
-        </li>
-                <li><a><span class="caret">Ibanda</span></a>
-                        <ul class="nested">
-                                <li><span class="caret">Me</span>
-                                        <ul class="nested">
-                                                <li>Martin</li>
-                                                <li>Doreen</li>         
-                                            </ul>
-                                </li>        
-                                </ul>
-                </li>
-                <li><a><span class="caret">Kiruhura</span></a>
-                        <ul class="nested">
-                                <li><span class="caret">you</span>
-                                
-                                    <ul class="nested">
-                                            <li>Benjamin</li>
-                                            <li>Ben</li>
-                                            <li>Linda</li>         
-                                    </ul>
-                                </li> 
-                                    
-                        </ul>
-                </li>        
-            </ul>
-    </li>
-      <li><span class="caret">Northern Region</span>
-        <ul class="nested">
-          <li><a><span class="caret">Arua</span></a>
-                <ul class="nested">
-                        <li><span class="caret">Vivian</span>
-                            <ul class="nested">
-                                    <li>Mendes</li>
-                                    <li>Camilla</li>
-                                    <li>Gwen</li>         
-                                </ul>
-                        </li>         
-                        </ul>
-          </li>
-          <li><a><span class="caret">Gulu</span></a>
-                <ul class="nested">
-                        <li><span class="caret">Tororo</span>
-                                <ul class="nested">
-                                        <li>Lawrence</li>
-                                        <li>Bubu</li>
-                                        <li>Shawn</li>         
-                                    </ul>   
-                        </li> 
-                                
-                        </ul>
-          </li>
-          <li><a><span class="caret">Kitgum</span></a>
-                <ul class="nested">
-                        <li><span class="caret">Wewe</span>
-                            <ul class="nested">
-                            <li>Junior</li>
-                            <li>Jackie</li>
-                            <li>Mesut</li>
-                            </ul>
-                        </li>        
-                        </ul>
-          </li>
-        </ul>
-      </li>  
-    </ul>
-  </li>
-</ul>
+                       
+                
+            </div>
 
-<script>
-var toggler = document.getElementsByClassName("caret");
-var i;
 
-for (i = 0; i < toggler.length; i++) {
-  toggler[i].addEventListener("click", function() {
-    this.parentElement.querySelector(".nested").classList.toggle("active");
-    this.classList.toggle("caret-down");
-  });
-}
-</script>
-                   
+
+
+
+
+
+
+
+                    </div>
                     <div class="app-wrapper-footer">
                         <div class="app-footer">
                             <div class="app-footer__inner">
